@@ -393,6 +393,26 @@
 .tx-amount.income { color: #059669; }
 .tx-amount.expense { color: #dc2626; }
 
+.tx-delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  opacity: 0.3;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.tx-delete-btn:hover {
+  opacity: 1;
+  color: var(--expense-color);
+  background: rgba(239, 68, 68, 0.05);
+}
+
 /* Pagination */
 .pagination {
   display: flex;

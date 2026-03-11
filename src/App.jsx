@@ -105,6 +105,12 @@ const App = () => {
     setShowAddModal(false);
   };
 
+  const handleDeleteTransaction = (id) => {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+      setTransactions(transactions.filter(tx => tx.id !== id));
+    }
+  };
+
   const clearFilters = () => {
     setSelectedDate(null);
     setFilterType('all');
@@ -278,6 +284,16 @@ const App = () => {
                       <div className={`tx-amount ${tx.type}`}>
                         {tx.type === 'income' ? '+' : '-'}{formatCurrency(tx.amount)}
                       </div>
+                      <button 
+                        className="tx-delete-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteTransaction(tx.id);
+                        }}
+                        aria-label="Eliminar transacción"
+                      >
+                        <X size={16} />
+                      </button>
                     </motion.div>
                   ))
                 ) : (
