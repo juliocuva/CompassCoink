@@ -89,14 +89,14 @@ const App = () => {
       .from('transactions')
       .select('*')
       .eq('user_email', user.email)
-      .order('created_at', { ascending: false });
+      .order('id', { ascending: false });
 
     if (error) {
       console.error('Error fetching transactions:', error);
     } else {
       setTransactions(data.map(t => ({
         ...t,
-        date: new Date(t.created_at),
+        date: t.created_at ? new Date(t.created_at) : (t.date ? new Date(t.date) : new Date()),
         icon: t.type === 'income' ? <Plus size={20} /> : <ShoppingBag size={20} />
       })));
     }
