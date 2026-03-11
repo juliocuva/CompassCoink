@@ -67,35 +67,7 @@ const App = () => {
   const [showCalendarPicker, setShowCalendarPicker] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  // Expanded sample transactions for statistics
-  const [transactions, setTransactions] = useState([
-    { id: 1, title: 'Salario Marzo', amount: 4500000, type: 'income', category: 'Salary', date: new Date(), icon: <Briefcase size={20} /> },
-    { id: 2, title: 'Supermercado', amount: 450000, type: 'expense', category: 'Food', date: new Date(), icon: <ShoppingBag size={20} /> },
-    { id: 3, title: 'Netflix', amount: 45000, type: 'expense', category: 'Subscription', date: new Date(), icon: <Zap size={20} /> },
-    { id: 4, title: 'Café Juan Valdez', amount: 15000, type: 'expense', category: 'Food', date: new Date(), icon: <Coffee size={20} /> },
-    { id: 5, title: 'Freelance Design', amount: 1200000, type: 'income', category: 'Work', date: new Date(Date.now() - 86400000), icon: <Briefcase size={20} /> },
-    { id: 6, title: 'Gimnasio', amount: 120000, type: 'expense', category: 'Health', date: new Date(Date.now() - 86400000 * 2), icon: <Zap size={20} /> },
-    { id: 7, title: 'Alquiler', amount: 1800000, type: 'expense', category: 'Housing', date: new Date(Date.now() - 86400000 * 5), icon: <Home size={20} /> },
-    { id: 8, title: 'Internet', amount: 120000, type: 'expense', category: 'Services', date: new Date(Date.now() - 86400000 * 10), icon: <Zap size={20} /> },
-    // Previous Month Data
-    { id: 10, title: 'Salario Febrero', amount: 4500000, type: 'income', category: 'Salary', date: subMonths(new Date(), 1), icon: <Briefcase size={20} /> },
-    { id: 11, title: 'Cena Restaurante', amount: 250000, type: 'expense', category: 'Food', date: subMonths(new Date(), 1), icon: <Coffee size={20} /> },
-    { id: 12, title: 'Ropa', amount: 600000, type: 'expense', category: 'Shopping', date: subMonths(new Date(), 1), icon: <ShoppingBag size={20} /> },
-    // More data to test pagination
-    ...Array.from({ length: 15 }).map((_, i) => {
-      const d = new Date();
-      d.setDate(d.getDate() - (i % 5)); 
-      return {
-        id: 100 + i,
-        title: `Gasto extra ${i + 1}`,
-        amount: Math.floor(Math.random() * 100000) + 10000,
-        type: 'expense',
-        category: 'Misc',
-        date: d,
-        icon: <ShoppingBag size={20} />
-      };
-    })
-  ]);
+  const [transactions, setTransactions] = useState([]);
 
   // Derived Values
   const totals = useMemo(() => {
