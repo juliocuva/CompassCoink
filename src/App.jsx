@@ -184,7 +184,7 @@ const App = () => {
 
       <header className="app-header">
         <div className="logo-container centered">
-          <img src={logo} alt="Coin" className="app-logo-large" />
+          <img src={logo} alt="GoCoink" className="app-logo-large" />
         </div>
       </header>
 
@@ -655,7 +655,7 @@ const AuthView = ({ onLogin }) => {
         <div className="auth-header">
           <h2>{mode === 'login' ? 'Bienvenido' : 'Crea tu cuenta'}</h2>
           <div className="auth-logo-large-wrapper">
-            <img src={logo} alt="Coin" className="auth-logo-huge" />
+            <img src={logo} alt="GoCoink" className="auth-logo-huge" />
           </div>
           <p>{mode === 'login' ? 'Gestiona tus finanzas personales' : 'Únete al grupo de estudio financiero'}</p>
         </div>
