@@ -177,14 +177,30 @@ const App = () => {
     return <AuthView onLogin={(userData) => { setIsAuthenticated(true); setUser(userData); }} />;
   }
 
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setUser(null);
+    setTransactions([]);
+  };
+
   return (
     <div className="main-container">
       <div className="blob blob-1"></div>
       <div className="blob blob-2"></div>
 
       <header className="app-header">
+        <div className="header-actions left">
+          <button className="icon-btn-ghost" onClick={handleLogout} title="Cerrar Sesión">
+            <X size={20} />
+          </button>
+        </div>
         <div className="logo-container centered">
-          <img src={logo} alt="GoCoink" className="app-logo-large" />
+          <img src={logo} alt="GoCoink" className="app-logo-header" />
+        </div>
+        <div className="header-actions right">
+          <button className="icon-btn-ghost" title="Usuario">
+            <User size={20} />
+          </button>
         </div>
       </header>
 

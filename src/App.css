@@ -51,10 +51,36 @@
   align-items: center;
 }
 
-.app-logo-large {
-  width: 192px; /* 2x of previous 96px */
-  height: auto;
+.app-logo-header {
+  height: 32px; /* Professional header height */
+  width: auto;
   object-fit: contain;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 40px; /* Force consistent spacing around logo */
+}
+
+.icon-btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-btn-ghost:hover {
+  background: rgba(0,0,0,0.03);
+  color: var(--primary-color);
 }
 
 .filter-bar {
