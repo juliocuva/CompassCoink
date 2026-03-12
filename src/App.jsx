@@ -600,15 +600,22 @@ const StatisticsView = ({ transactions }) => {
 
       <div className="stats-grid">
         <div className="stat-summary-card glass">
+          <div className="stat-icon-circle balance">
+            <BarChart2 size={20} />
+          </div>
           <span className="summary-label">Balance Total</span>
           <span className={`summary-value ${stats.balance >= 0 ? 'positive' : 'negative'}`}>
             {formatCurrency(stats.balance)}
           </span>
           <span className="summary-subtitle">{statsPeriod === 'annual' ? 'Consolidado anual' : 'Cierre de mes'}</span>
         </div>
+        
         <div className="stat-summary-card glass">
+          <div className="stat-icon-circle expense">
+            <ArrowDownRight size={20} />
+          </div>
           <span className="summary-label">Mayor Gasto</span>
-          <span className="summary-value">{stats.topCategory}</span>
+          <span className="summary-value truncate">{stats.topCategory}</span>
           <span className="summary-pct">{stats.topCategoryPct}% del total</span>
         </div>
       </div>

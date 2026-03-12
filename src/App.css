@@ -1,13 +1,12 @@
 /* Existing Base Styles */
 .main-container {
   min-height: 100vh;
-  padding: 16px 20px 200px;
+  padding: 16px 20px 140px; /* Reduced bottom padding since nav is fixed */
   max-width: 480px;
   margin: 0 auto;
   position: relative;
   background-color: var(--bg-color);
   overflow-x: hidden;
-  box-shadow: 0 0 100px rgba(0,0,0,0.1); /* Adds definition on desktop */
 }
 
 /* Force mobile-only context by preventing wide layouts */
@@ -460,10 +459,40 @@
 }
 
 .stat-summary-card {
-  padding: 16px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.stat-icon-circle.balance {
+  background: rgba(107, 33, 168, 0.1);
+  color: var(--primary-color);
+}
+
+.stat-icon-circle.expense {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--expense-color);
+}
+
+.summary-value.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Stats Styles */
@@ -546,12 +575,11 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 480px;
-  padding: 20px 20px 10px;
+  padding: 10px 20px 10px;
   display: flex;
   justify-content: center;
   z-index: 100;
   pointer-events: none;
-  background: linear-gradient(to top, var(--bg-color) 70%, rgba(248, 250, 252, 0) 100%);
 }
 
 .action-bar-container.flex-column {
