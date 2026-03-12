@@ -33,7 +33,9 @@ import {
   Tooltip, 
   ResponsiveContainer,
   Cell,
-  Legend
+  Legend,
+  AreaChart,
+  Area
 } from 'recharts';
 import { createClient } from '@supabase/supabase-js';
 
@@ -515,21 +517,31 @@ const StatisticsView = ({ transactions }) => {
         };
       });
     } else {
-      // Monthly view: show day by day or just simple aggregation for the month is usually enough, 
-      // but let's show weeks for a monthly view to make it interesting
-      const start = startOfMonth(currentDate);
-      const end = endOfMonth(currentDate) > new Date() ? new Date() : endOfMonth(currentDate);
+      // Monthly view: Group by Weeks to keep it clean (4-5 bars)
+      const startMonth = startOfMonth(currentDate);
+      const endMonth = endOfMonth(currentDate);
       
-      // Simple daily view for the month
-      const days = eachDayOfInterval({ start, end });
-      // To keep chart readable, we can group by 5-day intervals or just show the days. 
-      // Let's group by days for now.
-      return days.map(day => {
-        const dayTxs = transactions.filter(t => isSameDay(t.date, day));
-        const income = dayTxs.reduce((sum, t) => t.type === 'income' ? sum + t.amount : sum, 0);
-        const expense = dayTxs.reduce((sum, t) => t.type === 'expense' ? sum + t.amount : sum, 0);
+      const weeks = [];
+      let tempDate = startMonth;
+      while (tempDate <= endMonth) {
+        const wStart = tempDate;
+        const wEnd = endOfWeek(tempDate) > endMonth ? endMonth : endOfWeek(tempDate);
+        weeks.push({ start: wStart, end: wEnd });
+        tempDate = addMonths(wStart, 0); // dummy for date-fns
+        tempDate = new Date(wEnd);
+        tempDate.setDate(tempDate.getDate() + 1);
+      }
+
+      return weeks.map((week, idx) => {
+        const weekTxs = transactions.filter(t => t.date >= week.start && t.date <= week.end);
+        const income = weekTxs.reduce((sum, t) => t.type === 'income' ? sum + t.amount : sum, 0);
+        const expense = weekTxs.reduce((sum, t) => t.type === 'expense' ? sum + t.amount : sum, 0);
+        
+        // Label like "1-7", "8-14"
+        const label = `${format(week.start, 'd')}-${format(week.end, 'd')}`;
+        
         return {
-          name: format(day, 'dd'),
+          name: label,
           ingresos: income,
           gastos: expense
         };
@@ -602,7 +614,9 @@ const StatisticsView = ({ transactions }) => {
       </div>
       
       <div className="chart-wrapper glass">
-        <h4 className="chart-subtitle">Balance de {statsPeriod === 'annual' ? 'el Año' : 'el Mes'}</h4>
+        <h4 className="chart-subtitle">
+          {statsPeriod === 'annual' ? 'Consolidado por Meses' : 'Distribución por Semanas'}
+        </h4>
         <ResponsiveContainer width="100%" height={260}>
           <BarChart data={chartData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
