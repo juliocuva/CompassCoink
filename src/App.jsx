@@ -218,9 +218,6 @@ const App = () => {
           <img src={logo} alt="GoCoin" className="app-logo-header" />
         </div>
         <div className="header-actions right">
-          <button className="icon-btn-ghost danger" onClick={clearAllData} title="Borrar todo">
-            <ShoppingBag size={20} />
-          </button>
           <button className="icon-btn-ghost" title="Usuario">
             <User size={20} />
           </button>
