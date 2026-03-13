@@ -1,3 +1,4 @@
+// GoCoin Version 1.1.1 - Updated for branding consistency
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
