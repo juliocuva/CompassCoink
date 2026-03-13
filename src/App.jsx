@@ -215,10 +215,7 @@ const App = () => {
           </button>
         </div>
         <div className="logo-container centered">
-          <div className="logo-wrapper-gocoin">
-            <span className="logo-prefix">Go</span>
-            <img src={logo} alt="GoCoin" className="app-logo-header" />
-          </div>
+          <img src={logo} alt="GoCoin" className="app-logo-header" />
         </div>
         <div className="header-actions right">
           <button className="icon-btn-ghost danger" onClick={clearAllData} title="Borrar todo">
@@ -716,7 +713,6 @@ const AuthView = ({ onLogin }) => {
           <h2>{mode === 'login' ? 'Bienvenido' : 'Crea tu cuenta'}</h2>
           <div className="auth-logo-large-wrapper">
             <img src={logo} alt="GoCoin" className="auth-logo-huge" />
-            <h1 className="auth-brand-name">GoCoin</h1>
           </div>
           <p>{mode === 'login' ? 'Gestiona tus finanzas personales con GoCoin' : 'Únete al grupo de estudio financiero de GoCoin'}</p>
         </div>
