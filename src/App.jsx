@@ -710,11 +710,11 @@ const AuthView = ({ onLogin }) => {
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="auth-header">
-          <h2>{mode === 'login' ? 'Bienvenido' : 'Crea tu cuenta'}</h2>
+          <h2>{mode === 'login' ? 'Bienvenido a' : 'Crea tu cuenta'}</h2>
           <div className="auth-logo-large-wrapper">
             <img src={logo} alt="GoCoin" className="auth-logo-huge" />
           </div>
-          <p>{mode === 'login' ? 'Gestiona tus finanzas personales con GoCoin' : 'Únete al grupo de estudio financiero de GoCoin'}</p>
+          <p>{mode === 'login' ? 'Gestiona tus finanzas personales.' : 'Únete al grupo de estudio financiero de GoCoin'}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
@@ -778,6 +778,10 @@ const AuthView = ({ onLogin }) => {
           ) : (
             <p>¿Ya eres parte? <span onClick={() => setMode('login')}>Inicia sesión</span></p>
           )}
+        </div>
+
+        <div className="footer-credit" style={{ marginTop: '20px' }}>
+          Diseñado por <strong>MOUSELAB</strong>
         </div>
       </motion.div>
     </div>
