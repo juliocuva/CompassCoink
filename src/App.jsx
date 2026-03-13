@@ -693,9 +693,10 @@ const AuthView = ({ onLogin }) => {
   };
 
   const handleGoogleLogin = () => {
-    // Placeholder for Google Auth integration
-    console.log("Iniciando Google Login...");
-    onLogin({ email: 'usuario@google.com', name: 'Usuario Google' });
+    // Generar un email único para que empiece en 0
+    const uniqueEmail = `user_${Date.now()}@google.com`;
+    console.log("Iniciando Google Login simulado...");
+    onLogin({ email: uniqueEmail, name: 'Nuevo Usuario' });
   };
 
   return (
