@@ -709,8 +709,9 @@ const AuthView = ({ onLogin }) => {
           <h2>{mode === 'login' ? 'Bienvenido' : 'Crea tu cuenta'}</h2>
           <div className="auth-logo-large-wrapper">
             <img src={logo} alt="GoCoin" className="auth-logo-huge" />
+            <h1 className="auth-brand-name">GoCoin</h1>
           </div>
-          <p>{mode === 'login' ? 'Gestiona tus finanzas personales' : 'Únete al grupo de estudio financiero'}</p>
+          <p>{mode === 'login' ? 'Gestiona tus finanzas personales con GoCoin' : 'Únete al grupo de estudio financiero de GoCoin'}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
